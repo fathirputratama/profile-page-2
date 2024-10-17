@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'homePage.dart'; // Import halaman HomePage untuk navigasi
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+    class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
@@ -28,166 +28,190 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _sekolahController = TextEditingController();
+  final TextEditingController _roleController = TextEditingController();
+  final TextEditingController _deskripsiController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 40.0, left: 20.0, right: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Column(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Form Profile",
-                  style: GoogleFonts.poppins(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromARGB(255, 0, 0, 0)),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Silahkan untuk mengisi form profile anda",
-                  style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromARGB(255, 0, 0, 0)),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  controller: _usernameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Masukan username';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Nama',
-                    hintText: 'Input nama anda',
-                    hintStyle: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromARGB(255, 98, 98, 98),
-                    ),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        )),
+                Center(
+                  child: Image.asset(
+                    'assets/images/login.jpg',
+                    height: 180,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                const SizedBox(height: 32.0),
+                const Text(
+                  "Form Profile",
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
                 ),
-                TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Masukan sekolah';
-                    }
-                    return null;
-                  },
-                  keyboardType: TextInputType.visiblePassword,
-                  // obscureText: true,
+                const SizedBox(height: 8.0),
+                const Text(
+                  "Please fill out the form below to continue.",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  ),
+                ),
+                const SizedBox(height: 32.0),
+                // Username input
+                TextField(
+                  controller: _usernameController,
+                  cursorColor: Colors.teal,
+                  style: const TextStyle(color: Colors.black87),
+                  decoration: InputDecoration(
+                    labelText: 'Nama',
+                    labelStyle: const TextStyle(color: Colors.black87),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon: const Icon(Icons.person, color: Colors.black87),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                // Sekolah input
+                TextField(
                   controller: _sekolahController,
+                  cursorColor: Colors.teal,
+                  style: const TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
                     labelText: 'Sekolah',
-                    hintText: 'Input nama sekolah',
-                    hintStyle: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromARGB(255, 98, 98, 98),
+                    labelStyle: const TextStyle(color: Colors.black87),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
                     ),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        )),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon: const Icon(Icons.school, color: Colors.black87),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                // Role input
+                TextField(
+                  controller: _roleController,
+                  cursorColor: Colors.teal,
+                  style: const TextStyle(color: Colors.black87),
+                  decoration: InputDecoration(
+                    labelText: 'Role',
+                    labelStyle: const TextStyle(color: Colors.black87),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon: const Icon(Icons.work, color: Colors.black87),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                // Deskripsi input
+                TextField(
+                  controller: _deskripsiController,
+                  cursorColor: Colors.teal,
+                  style: const TextStyle(color: Colors.black87),
+                  decoration: InputDecoration(
+                    labelText: 'Deskripsi',
+                    labelStyle: const TextStyle(color: Colors.black87),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon: const Icon(Icons.description, color: Colors.black87),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                // Sign In button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_usernameController.text.isEmpty ||
+                          _sekolahController.text.isEmpty ||
+                          _roleController.text.isEmpty ||
+                          _deskripsiController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text(
+                              'Isi form login dengan lengkap!',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(
+                              username: _usernameController.text,
+                              sekolah: _sekolahController.text,
+                              role: _roleController.text,
+                              deskripsi: _deskripsiController.text,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      backgroundColor: Colors.teal,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text(
+                      "Submit",
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ],
             ),
-            InkWell(
-              onTap: () {
-                if (_usernameController.text.isEmpty ||
-                    _sekolahController.text.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      backgroundColor: Colors.red,
-                      content: Text(
-                        'Isi form login dengan lengkap!',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  );
-                } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(
-                        username: _usernameController.text,
-                        sekolah: _sekolahController.text,
-                      ),
-                    ),
-                  );
-                }
-              },
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                ),
-                child: Center(
-                  child: Text(
-                    "Login",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color.fromARGB(255, 255, 255, 255)),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key, required this.username, required this.sekolah});
-  final String username;
-  final String sekolah;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          "Welcome back - $username - $sekolah",
-          style: GoogleFonts.poppins(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: const Color.fromARGB(255, 0, 0, 0)),
+          ),
         ),
       ),
     );
